@@ -1,4 +1,4 @@
-# Review Week Checkpoint - Express
+# Review Checkpoint - Express
 
 ## Recursos
 
