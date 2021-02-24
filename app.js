@@ -3,7 +3,7 @@ var app = express();
 const Book = require('./models/book')
 var bodyParser = require("body-parser");
 const { update } = require('lodash');
-const Chapter = require('./models/chapter')
+const Chapter = require('./models/chapter');
 
 app.use(bodyParser.json());
 
@@ -106,13 +106,25 @@ app.get('/api/books/:id/chapters', (req, res, next) =>{
     })
 })
 
-app.post("/api/books/:id/chapters", (req, res, next) => {
-    Chapter.create(req.body)
-        .then((chapter) => {
-            res.status(201)
-            res.send(chapter)
+app.post('/api/books/:id/chapters', (req, res, next) => {
+    /* Chapter.create({
+    ...req.body, bookId: req.params.id
+    }) */
+    
+    Chapter.create({
+        title: req.body.title,
+            text: req.body.text,
+        number: req.body.number,
+        bookId: req.params.id
     })
-});
+        .then((chapter) => {
+        res.status(201).send(chapter)
+    })
+})
+
+
+
+
 
 
 
